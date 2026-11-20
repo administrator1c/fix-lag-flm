@@ -1,0 +1,27 @@
+
+name: Extract FLM BOOST ZIP
+
+on:
+  workflow_dispatch:
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Extract ZIP
+        run: |
+          unzip -o FLM-BOOST-GitHub-Source.zip -d extracted
+
+      - name: Commit extracted files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add extracted/
+          git commit -m "Extract FLM BOOST source" || exit 0
+          git push
