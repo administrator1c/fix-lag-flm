@@ -1,5 +1,5 @@
 
-name: Extract FLM BOOST
+name: Extract FLM-BOOST
 
 on:
   workflow_dispatch:
